@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<a class="navbar-brand" th:href="@{/repositories}">Spring OAuth Client Thymeleaf -1</a>
+Hi, <span sec:authentication="name">preferred_username</span>
+
+
+<h1>All Repositories:</h1>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${repositories.empty}">
+        <td colspan="4">No repositories</td>
+    </tr>
+    <tr th:each="repository : ${repositories}">
+        <td><span th:text="${repository.id}"> ID </span></td>
+        <td><span th:text="${repository.name}"> Name </span></td>
+    </tr>
+    </tbody>
+</table>
+
+</html>

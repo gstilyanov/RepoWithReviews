@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 7f3fdf41e3a884934507
+            client-secret: f7377334f3c9d2d2ccde0dd17f479eb09c908417
+            redirect-uri: http://localhost:8080/login/oauth2/code/github
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8082
+  servlet:
+    context-path: /ui-one
+
+resourceserver:
+  api:
+      url: http://review-service/repositories/
