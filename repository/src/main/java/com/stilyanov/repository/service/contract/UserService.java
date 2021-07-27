@@ -6,5 +6,5 @@ public interface UserService {
 
     void create(User user);
 
-    User getByName(String username);
+    User getByUsername(String username);
 }

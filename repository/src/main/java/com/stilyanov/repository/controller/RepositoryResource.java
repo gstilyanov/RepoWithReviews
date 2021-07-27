@@ -79,7 +79,7 @@ public class RepositoryResource {
     @PutMapping("/{id}")
     public Repository update(@PathVariable long id, @Valid @RequestBody RepositoryDto repositoryDto, Principal principal) {
         try {
-            User user = userService.getByName(principal.getName());
+            User user = userService.getByUsername(principal.getName());
             Repository repositoryToUpdate = repositoryService.getById(id);
             Mapper.toRepository(repositoryDto, repositoryToUpdate);
             repositoryService.update(repositoryToUpdate, user);
@@ -97,7 +97,7 @@ public class RepositoryResource {
     public void delete(@PathVariable long id, Principal principal) {
         try {
             Repository repository = repositoryService.getById(id);
-            User user = userService.getByName(principal.getName());
+            User user = userService.getByUsername(principal.getName());
             repositoryService.delete(repository, user);
         } catch (InvalidOperationException e) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
