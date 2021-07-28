@@ -5,12 +5,14 @@ import com.stilyanov.apigateway.client.RepositoryClient;
 import com.stilyanov.apigateway.model.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
+@RequestMapping("/repositories")
 public class RepositoryController {
 
     private final RepositoryClient repositoryClient;
@@ -23,7 +25,7 @@ public class RepositoryController {
         return new ArrayList<>();
     }
 
-    @GetMapping("/repositories")
+    @GetMapping
     @CrossOrigin
     @HystrixCommand(fallbackMethod = "fallback")
     public Collection<Repository> repositories() {
